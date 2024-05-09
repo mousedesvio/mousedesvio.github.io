@@ -8,18 +8,26 @@ let implicit = 'hide'
 document.forms.formulario.addEventListener('submit', function(e) {
     e.preventDefault(); // Don't send form
     var resultadoLab = calculadoraLabística(this.elements.func.value);
-    console.log(resultadoLab)
-    document.getElementById('text').textContent = resultadoLab[0];
-    console.log(document.getElementById('image').childElementCount);
-    if(document.getElementById('image').childElementCount >= 1){
-        var latex = document.getElementsByClassName('MathJax CtxtMenu_Attached_0')[0]
-        latex.parentNode.removeChild(latex);
+    
+    try {
+        document.getElementById('text').textContent = resultadoLab[0];
+        console.log(document.getElementById('image').childElementCount);
+        if(document.getElementById('image').childElementCount >= 1){
+            var latex = document.getElementsByClassName('MathJax CtxtMenu_Attached_0')[0]
+            latex.parentNode.removeChild(latex);
+        }
+        MathJax.typesetClear();
+        document.getElementById('image').appendChild(mj(math.parse(resultadoLab[1]).toTex({parenthesis: parenthesis, implicit: implicit})));
+    } catch (error) {
+        console.log(error)
     }
-    MathJax.typesetClear();
-    document.getElementById('image').appendChild(mj(math.parse(resultadoLab[1]).toTex({parenthesis: parenthesis, implicit: implicit})));
+
   });
 
 function calculadoraLabística(expr) {
+    if(expr == '')
+        return []
+
     expr = expr.replaceAll('**', '^');
     expr = expr.replaceAll(',', '.');
 

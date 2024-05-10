@@ -1,22 +1,30 @@
 /*Seção do div principal*/
 .container {
     width: 100%;
-    height: 100%;
+    height: 98vh;
     overflow-x: hidden;
     --color: rgba(114, 114, 114, 0.3);
     background-color: #191a1a;
     background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
         linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
     background-size: 55px 55px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .mainDiv {
-    height: 80vh;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     font-family: bahnschrift;
+}
+
+@media (max-width: 768px) {
+    .mainDiv{
+        width: 100%;
+    }
 }
 
 h1{
@@ -24,6 +32,16 @@ h1{
     text-align: center;
     padding-bottom: 50px;
     font-family: bahnschrift;
+    font-size: 30px;
+}
+
+#image{
+    text-align: center;
+    overflow-x: auto; /* permitir rolagem horizontal */
+    overflow-y: hidden; /* esconder rolagem vertical */
+    padding-bottom: 1%;
+    max-width: 80%;
+    width: 700px;
 }
 
 /*Seção das respostas do formulário*/
@@ -34,10 +52,12 @@ h1{
     flex-direction: column;
     color: white;
 
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 80px;
-    padding-right: 80px;
+    max-width: 80%;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
 
     margin-top: 30px;
 
@@ -50,8 +70,15 @@ h1{
     
    }
 
+@media (max-width: 768px) {
+    .card {
+        width: 60%;
+    }
+}
+
 #text {
     margin-bottom: 40px;
+    text-wrap: wrap;
 }
 
 p{
@@ -77,6 +104,12 @@ p{
     animation: gradient 5s ease infinite;
   }
   
+@media (max-width: 768px) {
+    .form-container{
+        width: 300px;
+    }
+}
+
   @keyframes gradient {
     0% {
       background-position: 0% 50%;
@@ -153,9 +186,9 @@ p{
   
   .form-container .form-submit-btn {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    align-self: flex-start;
+    align-self: center;
     font-family: inherit;
     color: #717171;
     font-weight: 600;
@@ -177,16 +210,26 @@ p{
 
 /* Seção do footer */
 footer{
-    height: 10vh;
     display: flex;
+    height: 200px;
     align-items: center;
     justify-content: center;
     font-family: bahnschrift;
+    padding: 20px; /* Espaçamento interno original */
+}
+
+/* Media query para telas menores */
+@media (max-width: 768px) {
+    footer {
+        height: 150px; /* Altura menor para telas menores */
+        padding: 10px; /* Espaçamento interno menor para telas menores */
+    }
 }
 
 .button-icon {
     margin-top: 100px;
     display: flex;
+    margin-top: 20px;
     border: 3px #fff solid;
     width: fit-content;
     height: fit-content;
@@ -242,4 +285,15 @@ footer{
     color: #fff;
     transform: translate3d(0, 0, 1em);
   }
-  
+
+/* Media query */
+
+@media (max-width: 40rem) {
+    h1{
+        padding-bottom: 10px;
+        font-size: 20px;
+    }
+    footer{
+        height: 100px;
+    }
+}

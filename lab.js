@@ -7,11 +7,12 @@ let implicit = 'hide'
 
 document.forms.formulario.addEventListener('submit', function(e) {
     e.preventDefault(); // Don't send form
-    document.getElementById('equation').style.border = "1px solid #414141";
-    document.getElementById('vars').style.border = "1px solid #414141";
+    document.getElementById('equation').style.border = "3px solid black";
+    document.getElementById('vars').style.border = "3px solid black";
     var resultadoLab = calculadoraLabística(this.elements.func.value, this.elements.vars.value);
     
     try {
+        document.getElementById('result').style.display = 'flex';
         document.getElementById('text').textContent = resultadoLab[0];
         console.log(document.getElementById('image').childElementCount);
         if(document.getElementById('image').childElementCount >= 1){
